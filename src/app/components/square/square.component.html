@@ -1,0 +1,6 @@
+<div class="content-square" [@openClose]="'open'">
+ <!-- <button (click)="click()">TTT</button> -->
+ <div [@openClose]="isOpen ? 'open' : 'closed'" class="open-close-container">
+    <p>The box is now {{ isOpen ? 'Open' : 'Closed' }}!</p>
+  </div>
+</div>

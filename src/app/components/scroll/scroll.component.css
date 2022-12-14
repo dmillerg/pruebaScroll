@@ -5,7 +5,7 @@
     left: 0;
     right: 0;
     padding-inline: 20px;
-    overflow-y: auto;
+    overflow-y: hidden;
 }
 
 .button-panel{

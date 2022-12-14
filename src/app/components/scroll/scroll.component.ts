@@ -14,17 +14,35 @@ export class ScrollComponent implements OnInit {
     { id: 2, pais: 'esperadown' },
     { id: 3, pais: 'esperadown' },
     { id: 4, pais: 'esperadown' },
+    { id: 5, pais: 'esperadown' },
+    { id: 6, pais: 'esperadown' },
+    { id: 7, pais: 'esperadown' },
+    { id: 8, pais: 'esperadown' },
+    { id: 9, pais: 'esperadown' },
   ];
   active: number = 0;
+  currentPosition: number = 0;
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  @HostListener("scroll", ['$event'])
-  doSomethingOnInternalScroll($event: Event) {
+  // @HostListener("scroll", ['$event'])
+  // doSomethingOnInternalScroll(e: any) {
+  //   let scroll = e.scrollingElement.scrollTop;
+  //   console.log("this is the scroll position", scroll)
+  //   if (scroll > this.currentPosition) {
+  //     console.log("scrollDown");
+  //   } else {
+  //     console.log("scrollUp");
+  //   }
+  //   this.currentPosition = scroll;
+  //   // console.log("scroll: ", $event);
+  // }
 
-    console.log("scroll: ", $event);
+  scroll(event: any) {
+    console.log(event);
+
   }
 
   up() {
@@ -58,8 +76,9 @@ export class ScrollComponent implements OnInit {
   }
 
   cambiarHasta(id: number) {
+    let caminocorto = (parseInt((id - this.active) + '') >= Math.round(this.pages.length / 2));
     while (this.active != id) {
-      this.up();
+      if (caminocorto) this.down(); else this.up();
     }
   }
 }

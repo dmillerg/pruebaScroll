@@ -33,15 +33,15 @@ export const openClose = trigger('openClose', [
     //     animate('500ms', style({ transform: 'scale(0)', opacity: 0 })),
     // ]),
     transition('active => esperaup', [
-        animate('1000ms')
+        animate('500ms')
     ]),
      transition('active => esperadown', [
-        animate('1000ms')
+        animate('500ms')
     ]),
     transition('esperaup => active', [
-        animate('1000ms')
+        animate('500ms')
     ]),
     transition('esperadown => active', [
-        animate('1000ms')
+        animate('500ms')
     ]),
 ])

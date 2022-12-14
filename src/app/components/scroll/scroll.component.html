@@ -1,11 +1,13 @@
 <div class="scroll" (scroll)="doSomethingOnInternalScroll($event)">
     <div *ngFor="let item of pages">
-        <div  [@openClose]="item.pais"  style="position: absolute;">
+        <div [@openClose]="item.pais" style="position: absolute;">
             <button style="width: 100%;height: 400px;">{{item.id}}</button>
             <!-- <app-square [pais]="item.pais"></app-square> -->
         </div>
     </div>
 </div>
-
-<button class="btn up" (click)="up()">Up</button>
-<button class="btn down" (click)="down()">Down</button>
+<div class="button-panel">
+    <button class="btn up" (click)="up()">Up</button>
+    <div class="btn" *ngFor="let item of pages; let i = index" (click)="cambiarHasta(i)">{{item.id}}</div>
+    <button class="btn down" (click)="down()">Down</button>
+</div>

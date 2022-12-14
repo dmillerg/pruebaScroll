@@ -27,30 +27,6 @@ export class ScrollComponent implements OnInit {
     console.log("scroll: ", $event);
   }
 
-  checkear(item: any) {
-    // console.log(this.pages.indexOf(item) == this.active);
-
-    return this.pages.indexOf(item) == this.active;
-  }
-
-  cambiar() {
-    this.pages[this.active].pais = 'esperadown';
-    if (this.active == 2) {
-      this.cambiarTodos();
-      this.active = 0
-    } else this.active++;
-
-    // this.cambiarTodos()
-    this.pages[this.active].pais = 'active';
-  }
-
-  cambiarTodos() {
-    this.pages.forEach((e, i) => {
-      // if(i!=2)
-      e.pais = 'esperaup'
-    })
-  }
-
   up() {
     this.pages[this.active].pais = 'esperaup';
     this.cambiarActive('up');
@@ -79,5 +55,11 @@ export class ScrollComponent implements OnInit {
   down() {
     this.pages[this.active].pais = 'esperadown';
     this.cambiarActive('down');
+  }
+
+  cambiarHasta(id: number) {
+    while (this.active != id) {
+      this.up();
+    }
   }
 }

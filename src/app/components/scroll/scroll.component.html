@@ -1,13 +1,13 @@
-<div class="scroll" (scroll)="scroll($event)">
+<div class="scroll">
     <div *ngFor="let item of pages">
-        <div [@openClose]="item.pais" style="position: absolute;">
-            <button style="width: 100%;height: 400px;">{{item.id}}</button>
-            <!-- <app-square [pais]="item.pais"></app-square> -->
+        <div [@openClose]="item.pais" style="position: absolute;display: flex;justify-content: center;align-items: center;color: 
+        black;font-weight: bolder;font-size: 100px; text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);">
+            <h1 class="h1" [@homeAnim]="':enter'" *ngIf="item.id-1==active">{{item.id}}</h1>
         </div>
     </div>
 </div>
 <div class="button-panel">
-    <button class="btn up" (click)="up()">Up</button>
-    <div class="btn" *ngFor="let item of pages; let i = index" (click)="cambiarHasta(i)">{{item.id}}</div>
-    <button class="btn down" (click)="down()">Down</button>
+    <button class="btn" (click)="up()">Up</button>
+    <div class="btn" *ngFor="let item of pages; let i = index" (click)="cambiarHasta(i)">{{i}}</div>
+    <button class="btn" (click)="down()">Down</button>
 </div>

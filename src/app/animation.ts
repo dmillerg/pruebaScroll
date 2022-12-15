@@ -5,23 +5,21 @@ export const openClose = trigger('openClose', [
     // ...
 
     state('active', style({
-        width:'100%',
+        width: '100%',
         height: '100%',
-        opacity: 0.5,
-        backgroundColor: 'green'
+        opacity: 1,
+        backgroundColor: '#2e3138'
     })),
     state('esperaup', style({
-        width:'100%',
+        width: '100%',
         height: '100%',
-        opacity: 0,
-        backgroundColor: 'red',
+        backgroundColor: '#2e3138',
         transform: 'translateY(-100%)'
     })),
     state('esperadown', style({
-        width:'100%',
+        width: '100%',
         height: '100%',
-        opacity: 0,
-        backgroundColor: 'red',
+        backgroundColor: '#2e3138',
         transform: 'translateY(100%)'
     })),
     // transition(':enter', [
@@ -33,15 +31,26 @@ export const openClose = trigger('openClose', [
     //     animate('500ms', style({ transform: 'scale(0)', opacity: 0 })),
     // ]),
     transition('active => esperaup', [
-        animate('500ms')
+        animate('1000ms')
     ]),
-     transition('active => esperadown', [
-        animate('500ms')
+    transition('active => esperadown', [
+        animate('1000ms')
     ]),
     transition('esperaup => active', [
-        animate('500ms')
+        animate('1000ms')
     ]),
     transition('esperadown => active', [
-        animate('500ms')
+        animate('1000ms')
     ]),
 ])
+
+export const homeAnim = trigger('homeAnim', [
+    transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(-200%)'}),
+        animate('500ms cubic-bezier(.8, -0.6, 0.2, 1.5)', style({ opacity: 1 ,transform: 'translateY(0%)'})),
+    ]),
+    transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(-200%)'}),
+        animate('500ms cubic-bezier(.8, -0.6, 0.2, 1.5)', style({ opacity: 1 ,transform: 'translateY(0%)'})),
+    ]),
+]);

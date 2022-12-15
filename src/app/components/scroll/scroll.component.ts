@@ -1,11 +1,11 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { openClose } from 'src/app/animation';
+import { homeAnim, openClose } from 'src/app/animation';
 
 @Component({
   selector: 'app-scroll',
   templateUrl: './scroll.component.html',
   styleUrls: ['./scroll.component.css'],
-  animations: [openClose]
+  animations: [openClose, homeAnim]
 })
 export class ScrollComponent implements OnInit {
 
@@ -21,24 +21,24 @@ export class ScrollComponent implements OnInit {
     { id: 9, pais: 'esperadown' },
   ];
   active: number = 0;
-  currentPosition: number = 0;
+  currentPosition = window.pageYOffset;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  // @HostListener("scroll", ['$event'])
-  // doSomethingOnInternalScroll(e: any) {
-  //   let scroll = e.scrollingElement.scrollTop;
-  //   console.log("this is the scroll position", scroll)
+  // @HostListener("scroll", ['$event.target'])
+  // onContentScrolled(e: HTMLElement) {
+  //   let scroll = e.scrollTop;
   //   if (scroll > this.currentPosition) {
   //     console.log("scrollDown");
   //   } else {
   //     console.log("scrollUp");
   //   }
   //   this.currentPosition = scroll;
-  //   // console.log("scroll: ", $event);
   // }
+  
 
   scroll(event: any) {
     console.log(event);
@@ -57,7 +57,7 @@ export class ScrollComponent implements OnInit {
         this.pages[this.active].pais = 'esperadown'
         setTimeout(() => {
           this.pages[this.active].pais = 'active'
-        }, 50);
+        }, 0.1);
       }
     } else {
       this.active = this.active == 0 ? this.pages.length - 1 : this.active - 1
@@ -65,7 +65,7 @@ export class ScrollComponent implements OnInit {
         this.pages[this.active].pais = 'esperaup'
         setTimeout(() => {
           this.pages[this.active].pais = 'active'
-        }, 50);
+        }, 0.1);
       }
     }
   }

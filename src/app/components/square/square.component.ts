@@ -1,22 +1,22 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { openClose } from 'src/app/animation';
+import { homeAnim, openClose } from 'src/app/animation';
 
 @Component({
   selector: 'app-square',
   templateUrl: './square.component.html',
   styleUrls: ['./square.component.css'],
-  animations: [openClose]
+  animations: [homeAnim]
 })
 export class SquareComponent implements OnInit {
 
   @Input() pais: string = 'japon'
+  @Input() data: any;
   constructor() { }
 
   ngOnInit(): void {
   }
-  isOpen = true;
 
-  // toggle() {
-  //   this.isOpen = !this.isOpen;
-  // }
+  click(){
+    this.data.pais = 'esperadown';
+  }
 }

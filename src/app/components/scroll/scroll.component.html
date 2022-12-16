@@ -1,8 +1,7 @@
 <div class="scroll">
     <div *ngFor="let item of pages">
-        <div [@openClose]="item.pais" style="position: absolute;display: flex;justify-content: center;align-items: center;color: 
-        black;font-weight: bolder;font-size: 100px; text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);">
-            <h1 class="h1" [@homeAnim]="':enter'" *ngIf="item.id-1==active">{{item.id}}</h1>
+        <div [@openClose]="item.pais" class="square" >
+           <app-square [data]="item" ></app-square>
         </div>
     </div>
 </div>

@@ -1,6 +1,3 @@
-<div class="content-square" [@openClose]="'open'">
- <!-- <button (click)="click()">TTT</button> -->
- <div [@openClose]="isOpen ? 'open' : 'closed'" class="open-close-container">
-    <p>The box is now {{ isOpen ? 'Open' : 'Closed' }}!</p>
-  </div>
+<div class="content-square" [@homeAnim]="data.pais">
+  <h1 class="h1" (click)="click()">{{data.id}}</h1>
 </div>

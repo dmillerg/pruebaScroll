@@ -13,12 +13,14 @@ export const openClose = trigger('openClose', [
     state('esperaup', style({
         width: '100%',
         height: '100%',
+        opacity: 0,
         backgroundColor: '#2e3138',
         transform: 'translateY(-100%)'
     })),
     state('esperadown', style({
         width: '100%',
         height: '100%',
+        opacity: 0,
         backgroundColor: '#2e3138',
         transform: 'translateY(100%)'
     })),
@@ -45,12 +47,32 @@ export const openClose = trigger('openClose', [
 ])
 
 export const homeAnim = trigger('homeAnim', [
-    transition(':enter', [
-        style({ opacity: 0, transform: 'translateY(-200%)'}),
-        animate('500ms cubic-bezier(.8, -0.6, 0.2, 1.5)', style({ opacity: 1 ,transform: 'translateY(0%)'})),
+    state('esperadown', style({
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'green',
+        opacity: 0,
+    })),
+    state('esperaup', style({
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'red',
+        opacity: 0,
+    })),
+    state('active', style({
+        width: '100%',
+        height: '100%',
+        
+        backgroundColor: 'yellow',
+        opacity: 1,
+    })),
+    transition('esperadown => active', [
+        animate('10000ms')
     ]),
-    transition(':enter', [
-        style({ opacity: 0, transform: 'translateY(-200%)'}),
-        animate('500ms cubic-bezier(.8, -0.6, 0.2, 1.5)', style({ opacity: 1 ,transform: 'translateY(0%)'})),
+    transition('esperaup => active', [
+        animate('10000ms')
+    ]),
+    transition('active => *', [
+        animate('10000ms')
     ]),
 ]);
